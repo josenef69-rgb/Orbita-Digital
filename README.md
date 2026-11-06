@@ -1,2 +1,0 @@
-# Orbita-Digital
-dominio
