@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Órbita Digital | Marketing Digital & Google Maps en Estado de México</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #08090C;
+      --bg-surface: rgba(18, 20, 29, 0.7);
+      --bg-card: rgba(23, 26, 38, 0.65);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 240, 255, 0.25);
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --cyan: #00F0FF;
+      --cyan-glow: rgba(0, 240, 255, 0.4);
+      --purple: #BD00FF;
+      --green: #10B981;
+      --green-glow: rgba(16, 185, 129, 0.4);
+      --whatsapp: #25D366;
+      --gold: #FBBF24;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fondos con atmósfera luminosa (Glows) */
+    .bg-ambient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 50% 12%, rgba(0, 240, 255, 0.12) 0%, transparent 48%),
+        radial-gradient(circle at 85% 60%, rgba(189, 0, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 15% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+        #08090C;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header / Navbar */
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 9, 12, 0.85);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(189, 0, 255, 0.15));
+      border: 1px solid var(--border-glow);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+    }
+
+    .logo-text h1 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      display: block;
+    }
+
+    .nav-btn {
+      padding: 9px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 50px 0 70px;
+      text-align: left;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--green);
+      margin-bottom: 22px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero-title {
+      font-size: 46px;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      margin-bottom: 18px;
+      max-width: 720px;
+    }
+
+    .hero-title .glow-cyan {
+      color: var(--cyan);
+      text-shadow: 0 0 24px var(--cyan-glow);
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+
+    /* Botones de acción */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 30px;
+      background: linear-gradient(135deg, #00F0FF 0%, #00B4D8 100%);
+      color: #040914;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 22px rgba(0, 240, 255, 0.4);
+      transition: all 0.25s ease;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0, 240, 255, 0.6);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      padding: 16px 26px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .cta-subtext {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 45px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Tarjetas de Métricas */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 50px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px 18px;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .metric-card:hover {
+      border-color: rgba(0, 240, 255, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .metric-card:hover::before {
+      opacity: 1;
+    }
+
+    .metric-number {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .metric-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Mockup Google Maps & Redes */
+    .mockup-wrapper {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 80px;
+      padding: 24px;
+      background: radial-gradient(circle at center, rgba(0, 240, 255, 0.06), transparent 70%), var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .maps-card-hero {
+      background: #11131A;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .maps-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .business-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .verified-icon {
+      color: var(--cyan);
+      display: inline-flex;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .badge-open {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--green);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 14px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-item strong {
+      color: var(--text-main);
+    }
+
+    .action-chips {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .chip-btn {
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      text-align: center;
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Floating Badges */
+    .floating-social-tag {
+      position: absolute;
+      background: rgba(18, 20, 30, 0.95);
+      border: 1px solid var(--border-glow);
+      padding: 10px 16px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .tag-top-right {
+      top: -15px;
+      right: 15px;
+      border-color: rgba(189, 0, 255, 0.4);
+    }
+
+    .tag-bottom-left {
+      bottom: -15px;
+      left: 15px;
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+
+    /* Sección: ¿Para quién es esto? */
+    .target-section {
+      margin-bottom: 90px;
+    }
+
+    .target-card {
+      background: linear-gradient(135deg, rgba(23, 26, 38, 0.8), rgba(18, 20, 29, 0.9));
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .target-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .target-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #FFF;
+    }
+
+    .target-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .target-card p strong {
+      color: var(--text-main);
+    }
+
+    /* Sección: Servicios */
+    .services-section {
+      margin-bottom: 100px;
+    }
+
+    .section-header {
+      margin-bottom: 36px;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 580px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px 24px;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .service-card.featured {
+      border-color: rgba(0, 240, 255, 0.4);
+      background: linear-gradient(180deg, rgba(0, 240, 255, 0.05), rgba(23, 26, 38, 0.8));
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .service-card.featured .service-icon {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: rgba(0, 240, 255, 0.3);
+    }
+
+    .service-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #FFF;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .service-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-features li svg {
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .service-btn {
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: block;
+    }
+
+    .service-card.featured .service-btn {
+      background: var(--cyan);
+      color: #040914;
+    }
+
+    .service-card:not(.featured) .service-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFF;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .service-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Final CTA Banner */
+    .cta-banner {
+      background: radial-gradient(circle at top right, rgba(189, 0, 255, 0.15), transparent 60%),
+                  radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.15), transparent 60%),
+                  var(--bg-surface);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 24px;
+      padding: 48px 32px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .cta-banner h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 30px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: var(--whatsapp);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .floating-wa-btn:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 34px;
+      }
+      .cta-group {
+        flex-direction: column;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+      .floating-social-tag {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-ambient"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo-container">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Órbita Digital</h1>
+          <span>MARKETING · ESTADO DE MÉXICO</span>
+        </div>
+      </a>
+      <a href="#servicios" class="nav-btn">Ver servicios</a>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      
+      <!-- Status Badge -->
+      <div class="badge-pill">
+        <div class="status-dot"></div>
+        MARKETING DIGITAL & GOOGLE MAPS
+      </div>
+
+      <!-- Headline -->
+      <h2 class="hero-title">
+        Tu negocio en <span class="glow-cyan">órbita</span>, no en el olvido.
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="hero-desc">
+        Te ponemos en Google Maps y en la órbita digital para que más gente de tu zona te encuentre justo cuando busca lo que vendes y tu negocio despegue.
+      </p>
+
+      <!-- Botones de Acción -->
+      <div class="cta-group">
+        <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20quiero%20hacer%20despegar%20mi%20negocio%20con%20%C3%93rbita%20Digital" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#040914">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+          </svg>
+          Cotiza por WhatsApp
+        </a>
+        <a href="#servicios" class="btn-secondary">
+          Ver lo que hacemos
+        </a>
+      </div>
+      <div class="cta-subtext">
+        <span>⚡</span> Sin compromiso. Te contestamos directo por WhatsApp.
+      </div>
+
+      <!-- Tarjetas de Métricas -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-number" style="color: var(--cyan);">+180%</div>
+          <div class="metric-label">Más llamadas y visitas desde Google Maps</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number" style="color: var(--green);">24-48 hrs</div>
+          <div class="metric-label">Puesta en marcha y optimización express</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number" style="color: var(--purple);">100%</div>
+          <div class="metric-label">Ficha verificada, horarios al día y reseñas</div>
+        </div>
+      </div>
+
+      <!-- Mockup Visual: Google Maps Ficha Viva & Redes -->
+      <div class="mockup-wrapper">
+        
+        <!-- Tag flotante Instagram -->
+        <div class="floating-social-tag tag-top-right">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+          </svg>
+          <span>Instagram Ads: +1,450 clientes este mes</span>
+        </div>
+
+        <!-- Tag flotante Google Maps -->
+        <div class="floating-social-tag tag-bottom-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span>Posición #1 en tu zona del Estado de México</span>
+        </div>
+
+        <div class="maps-card-hero">
+          <div class="maps-header">
+            <div>
+              <div class="business-title">
+                Tu Negocio Local
+                <span class="verified-icon" title="Ficha Verificada por Google">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#00F0FF">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="rating-row">
+                <span style="font-weight: 700; color: #FFF;">4.9</span>
+                <span class="stars">★★★★★</span>
+                <span style="color: var(--text-muted);">(128 reseñas verificadas)</span>
+              </div>
+            </div>
+            <span class="badge-open">Abierto ahora</span>
+          </div>
+
+          <div class="info-list">
+            <div class="info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Estado de México · <strong>Apareces primero cuando te buscan</strong></span>
+            </div>
+            <div class="info-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Horarios: <strong>Lunes a Sábado · 9:00 AM - 8:00 PM</strong> (Verificados)</span>
+            </div>
+          </div>
+
+          <div class="action-chips">
+            <div class="chip-btn" style="border-color: rgba(0, 240, 255, 0.3);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Llamar</span>
+            </div>
+            <div class="chip-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+              <span>Cómo llegar</span>
+            </div>
+            <div class="chip-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/>
+                <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+              </svg>
+              <span>Compartir</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Sección: Para quién es -->
+    <section class="target-section">
+      <div class="target-card">
+        <div class="target-badge">🎯 ¿PARA QUIÉN ES ESTO?</div>
+        <h3>Para negocios locales que hacen buen trabajo pero nadie los encuentra</h3>
+        <p>
+          Haces un <strong>excelente trabajo y ofreces buenos productos</strong>, pero cuando la gente de tu colonia, municipio o zona busca lo que vendes en Google Maps o en Redes... <strong>solo le aparecen tus competidores</strong>. Nosotros nos encargamos de que estés arriba, con horarios al día, fotos pro y buenas reseñas para que te llamen a ti.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Lo que hacemos (Servicios) -->
+    <section class="services-section" id="servicios">
+      <div class="section-header">
+        <div class="section-subtitle">SERVICIOS</div>
+        <h2 class="section-title">Lo que hacemos por tu negocio</h2>
+        <p class="section-desc">Toma lo que necesites. Armamos el paquete según tu negocio, tu zona y tu presupuesto.</p>
+      </div>
+
+      <div class="services-grid">
+        
+        <!-- Tarjeta 1: Google Maps (Destacada) -->
+        <div class="service-card featured">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Google Maps & Ficha Pro</h3>
+          <p class="service-desc">Te posicionamos en los primeros lugares cuando busquen tu servicio en tu zona del Estado de México.</p>
+          <ul class="service-features">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Verificación oficial de ficha
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Horarios, fotos y catálogo al 100%
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Estrategia de reseñas 5 estrellas
+            </li>
+          </ul>
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Google%20Maps" target="_blank" class="service-btn">
+            Cotizar Google Maps
+          </a>
+        </div>
+
+        <!-- Tarjeta 2: Redes Sociales -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Redes Sociales Activas</h3>
+          <p class="service-desc">Mantenemos tus perfiles de Facebook, Instagram y X con publicaciones profesionales que atraen clientes reales.</p>
+          <ul class="service-features">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Diseño de posts y videos cortos
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Campañas de anuncios locales
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Aumento de interacción y seguidores
+            </li>
+          </ul>
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Redes%20Sociales" target="_blank" class="service-btn">
+            Cotizar Redes Sociales
+          </a>
+        </div>
+
+        <!-- Tarjeta 3: Sitio Web -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" x2="22" y1="12" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Sitio Web Express</h3>
+          <p class="service-desc">Una página web moderna, súper rápida y optimizada para mandar directo a los clientes a tu WhatsApp.</p>
+          <ul class="service-features">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              100% Adaptada a celulares
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Botones directos a WhatsApp y llamada
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Lista en menos de 48 horas
+            </li>
+          </ul>
+          <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Sitio%20Web" target="_blank" class="service-btn">
+            Cotizar Sitio Web
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Banner Final CTA -->
+    <section class="cta-banner">
+      <h2>¿Quieres hacer crecer tu negocio?</h2>
+      <p>Hazlo despegar con Órbita Digital. Te ponemos en el mundo digital y en Google Maps hoy mismo.</p>
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20quiero%20cotizar%20un%20paquete%20para%20mi%20negocio" target="_blank" class="btn-primary" style="display: inline-flex;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#040914">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+        </svg>
+        Hablar con un asesor por WhatsApp
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Órbita Digital · Marketing Digital para Negocios Locales · Estado de México</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20planes%20de%20%C3%93rbita%20Digital" target="_blank" class="floating-wa-btn" title="Contactar por WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
